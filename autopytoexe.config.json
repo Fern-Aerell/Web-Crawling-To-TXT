@@ -7,7 +7,7 @@
   },
   {
    "optionDest": "filenames",
-   "value": "D:/projects/Web-Crawling-To-Csv/src/webcrawling2csv.py"
+   "value": "D:/projects/Web-Crawling-To-TXT/src/webcrawling2txt.py"
   },
   {
    "optionDest": "onefile",
@@ -19,11 +19,11 @@
   },
   {
    "optionDest": "icon_file",
-   "value": "D:/projects/Web-Crawling-To-Csv/designs/icon.ico"
+   "value": "D:/projects/Web-Crawling-To-TXT/designs/icon/icon.ico"
   },
   {
    "optionDest": "name",
-   "value": "webcrawling2csv"
+   "value": "webcrawling2txt"
   },
   {
    "optionDest": "clean_build",
