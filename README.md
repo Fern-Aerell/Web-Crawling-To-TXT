@@ -1,16 +1,17 @@
-  # Web Scraping To CSV
+  # Web Crawling To CSV
 
   <p align="center">
     <img src="designs/icon.png" alt="icon" width="250" height="250">
   </p>
 
-  Proyek ini adalah sebuah aplikasi web scraping sederhana yang ditulis dalam bahasa Python. Aplikasi ini dapat melakukan crawling pada sebuah situs web, mengumpulkan URL yang valid, dan mengekstrak konten dari setiap URL tersebut.
+  Proyek ini adalah sebuah aplikasi web crawling asynchronous yang ditulis dalam bahasa Python. Aplikasi ini dapat melakukan crawling pada sebuah situs web, mengumpulkan URL yang valid, dan mengekstrak konten dari setiap URL tersebut.
 
   ## Fitur
 
-  - Crawling URL secara rekursif dalam domain yang sama
+  - Crawling URL secara asynchronous dalam domain yang sama
   - Ekstraksi konten teks dari setiap halaman web
-  - Penyimpanan hasil scraping dalam format CSV
+  - Penyimpanan hasil crawling dalam format CSV
+  - Pembersihan teks yang diekstrak
 
   ## Persyaratan
 
@@ -18,14 +19,14 @@
 
   - Python 3.x
   - Beberapa library Python yang dapat diinstal menggunakan pip:
-    - requests
+    - aiohttp
     - beautifulsoup4
-    - tqdm
+    - lxml
 
   Anda dapat menginstal semua dependensi dengan menjalankan:
 
 
-  pip install requests beautifulsoup4 tqdm
+  pip install aiohttp beautifulsoup4 lxml
 
 
   ## Penggunaan
@@ -33,32 +34,34 @@
   Untuk menjalankan aplikasi, gunakan perintah berikut di terminal:
 
 
-  python webscraping2csv.py <base_url> <output_file>
+  python webcrawling2csv.py <base_url> <output_file>
 
 
   Dimana:
-  - `<base_url>` adalah URL dasar situs web yang ingin Anda scrape
+  - `<base_url>` adalah URL dasar situs web yang ingin Anda crawl
   - `<output_file>` adalah nama file output (tanpa ekstensi .csv)
 
   Contoh:
 
 
-  python webscraping2csv.py https://www.example.com hasil_scraping
+  python webcrawling2csv.py https://www.example.com hasil_crawling
 
 
-  Hasil scraping akan disimpan dalam file CSV dengan nama `hasil_scraping.csv`.
+  Hasil crawling akan disimpan dalam file CSV dengan nama `hasil_crawling.csv`.
 
   ## Struktur Proyek
 
-  - `webscraping2csv.py`: File utama yang berisi semua fungsi untuk melakukan web scraping
-    - `crawl_url()`: Fungsi untuk melakukan crawling URL
-    - `get_url_content()`: Fungsi untuk mengekstrak konten dari URL
-    - `webscraping()`: Fungsi utama yang menjalankan proses scraping dan menyimpan hasilnya
+  - `webcrawling2csv.py`: File utama yang berisi semua fungsi untuk melakukan web crawling
+    - `clean_text()`: Fungsi untuk membersihkan teks yang diekstrak
+    - `crawl_url()`: Fungsi asynchronous untuk melakukan crawling URL
+    - `crawl_website()`: Fungsi utama yang menjalankan proses crawling dan menyimpan hasilnya
+    - `main()`: Fungsi untuk menangani argumen command line dan menjalankan crawling
 
   ## Catatan
 
-  - Pastikan untuk mematuhi kebijakan dan persyaratan layanan dari situs web yang Anda scrape.
+  - Pastikan untuk mematuhi kebijakan dan persyaratan layanan dari situs web yang Anda crawl.
   - Gunakan aplikasi ini dengan bijak dan bertanggung jawab.
+  - Aplikasi ini menggunakan asyncio dan aiohttp untuk melakukan crawling secara asynchronous, yang dapat meningkatkan kinerja pada situs web dengan banyak halaman.
 
   ## Kontribusi
 
