@@ -3,7 +3,6 @@ from urllib.parse import urljoin, urlparse
 import sys
 import asyncio
 import aiohttp
-import csv
 import re
 from collections import deque
 
@@ -21,7 +20,7 @@ async def crawl_url(session, url, base_domain, visited, to_visit, results):
             content = await response.text()
             soup = BeautifulSoup(content, 'lxml')
             text_content = clean_text(' '.join(soup.stripped_strings))
-            results.append((url, text_content))
+            results.append(text_content)
             visited.add(url)
             print(f"Crawled: {url}")
 
@@ -57,18 +56,17 @@ async def crawl_website(base_url, output_file):
                 for task in done:
                     await task
 
-    unique_results = list({result[0]: result for result in results}.values())
+    unique_results = list(set(results))
 
-    with open(f"{output_file}.csv", mode='w', newline='', encoding='utf-8') as fp:
-        writer = csv.writer(fp, quoting=csv.QUOTE_MINIMAL)
-        writer.writerow(["URL", "Content"])
-        writer.writerows(unique_results)
+    with open(f"{output_file}.txt", mode='w', encoding='utf-8') as fp:
+        for content in unique_results:
+            fp.write(f"{content}\n\n")
 
-    print(f"Crawling completed! Total crawled URLs: {len(unique_results)}")
+    print(f"Crawling completed! Total crawled contents: {len(unique_results)}")
 
 async def main():
     if len(sys.argv) != 3:
-        print("Usage: python webcrawling2csv.py <base_url> <output_file>")
+        print("Usage: python webcrawling2txt.py <base_url> <output_file>")
         sys.exit(1)
     
     base_url = sys.argv[1]
