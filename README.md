@@ -1,72 +1,72 @@
-  # Web Crawling To TXT
+# Web Crawling To TXT
 
-  <p align="center">
-    <img src="designs/icon/icon.png" alt="icon" width="250" height="250">
-  </p>
+<p align="center">
+  <img src="designs/icon/icon.png" alt="icon" width="250" height="250">
+</p>
 
-  Proyek ini adalah sebuah aplikasi web crawling asynchronous yang ditulis dalam bahasa Python. Aplikasi ini dapat melakukan crawling pada sebuah situs web, mengumpulkan URL yang valid, dan mengekstrak konten dari setiap URL tersebut.
+This project is an asynchronous web crawling application written in Python. The application can crawl a website, collect valid URLs, and extract content from each URL.
 
-  ## Fitur
+## Features
 
-  - Crawling URL secara asynchronous dalam domain yang sama
-  - Ekstraksi konten teks dari setiap halaman web
-  - Penyimpanan hasil crawling dalam format TXT
-  - Pembersihan teks yang diekstrak
+- Asynchronous URL crawling within the same domain  
+- Text content extraction from each web page  
+- Saving crawl results in TXT format  
+- Cleaning extracted text  
 
-  ## Persyaratan
+## Requirements
 
-  Untuk menjalankan aplikasi ini, Anda memerlukan:
+To run this application, you need:
 
-  - Python 3.x
-  - Beberapa library Python yang dapat diinstal menggunakan pip:
-    - aiohttp
-    - beautifulsoup4
-    - lxml
+- Python 3.x  
+- Several Python libraries that can be installed using pip:  
+  - aiohttp  
+  - beautifulsoup4  
+  - lxml  
 
-  Anda dapat menginstal semua dependensi dengan menjalankan:
+You can install all dependencies by running:
 
+```sh
+pip install aiohttp beautifulsoup4 lxml
+```
 
-  pip install aiohttp beautifulsoup4 lxml
+## Usage
 
+To run the application, use the following command in the terminal:
 
-  ## Penggunaan
+```sh
+python webcrawling2txt.py <base_url> <output_file>
+```
 
-  Untuk menjalankan aplikasi, gunakan perintah berikut di terminal:
+Where:  
+- `<base_url>` is the base URL of the website you want to crawl  
+- `<output_file>` is the output file name (without the .txt extension)  
 
+Example:
 
-  python webcrawling2txt.py <base_url> <output_file>
+```sh
+python webcrawling2txt.py https://www.example.com crawl_results
+```
 
+The crawl results will be saved in a TXT file named `crawl_results.txt`.
 
-  Dimana:
-  - `<base_url>` adalah URL dasar situs web yang ingin Anda crawl
-  - `<output_file>` adalah nama file output (tanpa ekstensi .txt)
+## Project Structure
 
-  Contoh:
+- `webcrawling2txt.py`: Main file containing all functions for web crawling  
+  - `clean_text()`: Function to clean the extracted text  
+  - `crawl_url()`: Asynchronous function for crawling URLs  
+  - `crawl_website()`: Main function that performs crawling and saves the results  
+  - `main()`: Function to handle command-line arguments and run the crawling process  
 
+## Notes
 
-  python webcrawling2txt.py https://www.example.com hasil_crawling
+- Make sure to comply with the policies and terms of service of the websites you crawl.  
+- Use this application responsibly and ethically.  
+- This application uses asyncio and aiohttp for asynchronous crawling, which improves performance on websites with many pages.  
 
+## Contribution
 
-  Hasil crawling akan disimpan dalam file TXT dengan nama `hasil_crawling.txt`.
+Contributions to this project are welcome. If you have suggestions or improvements, feel free to submit a pull request or open an issue.  
 
-  ## Struktur Proyek
+## License
 
-  - `webcrawling2txt.py`: File utama yang berisi semua fungsi untuk melakukan web crawling
-    - `clean_text()`: Fungsi untuk membersihkan teks yang diekstrak
-    - `crawl_url()`: Fungsi asynchronous untuk melakukan crawling URL
-    - `crawl_website()`: Fungsi utama yang menjalankan proses crawling dan menyimpan hasilnya
-    - `main()`: Fungsi untuk menangani argumen command line dan menjalankan crawling
-
-  ## Catatan
-
-  - Pastikan untuk mematuhi kebijakan dan persyaratan layanan dari situs web yang Anda crawl.
-  - Gunakan aplikasi ini dengan bijak dan bertanggung jawab.
-  - Aplikasi ini menggunakan asyncio dan aiohttp untuk melakukan crawling secara asynchronous, yang dapat meningkatkan kinerja pada situs web dengan banyak halaman.
-
-  ## Kontribusi
-
-  Kontribusi untuk proyek ini sangat diterima. Jika Anda memiliki saran atau perbaikan, silakan buat pull request atau buka issue.
-
-  ## Lisensi
-
-  [MIT License](LICENSE)
+[MIT License](LICENSE)  
